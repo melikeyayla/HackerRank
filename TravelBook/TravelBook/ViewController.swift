@@ -81,8 +81,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                                                     commentText.text = annotationSubtitle
                                                     
                                                     locationManager.stopUpdatingLocation()
-                                                    
-                                                    
+                                                    let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                                                    let region = MKCoordinateRegion(center: coordinate, span: span)
+                                                    mapView.setRegion(region, animated: true)
                                             }
                                             
                                     }
@@ -127,12 +128,68 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.latitude)
-        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-        let region = MKCoordinateRegion(center: location, span: span)
         
-        mapView.setRegion(region, animated: true)
+        if selectedTitle == "" {
+            let location = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.latitude)
+            let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+            let region = MKCoordinateRegion(center: location, span: span)
+            
+            mapView.setRegion(region, animated: true)
+        }else {
+            
+        }
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if annotation  is MKUserLocation {
+            return nil
+        }
+        
+        let reuseId = "myAnnocation"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKMarkerAnnotationView
+        
+        if pinView ==  nil {
+            
+            pinView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView?.canShowCallout = true
+            pinView?.tintColor = UIColor.black
+            
+            let button = UIButton(type: UIButton.ButtonType.detailDisclosure)
+            pinView?.rightCalloutAccessoryView = button
+        }else {
+            pinView?.annotation = annotation
+        }
+        
+        
+        return pinView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        if selectedTitle != ""{
+            
+           var requestLocation = CLLocation(latitude: annotationLatitude, longitude: annotationLongitude)
+            CLGeocoder().reverseGeocodeLocation(requestLocation) { (placemarks, error) in
+                //closure
+                
+                if let placemark == placemarks {
+                    if placemark.count > 0 {
+                        
+                        let newPlacemark = MKPlacemark(placemark : placemark[0])
+                        let item = MKMapItem(placemark: newPlacemark)
+                        item.name = self.annotationTitle
+                        
+                        let  lauchOptios = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+                        item.openInMaps(lauchOptios : lauchOptios)
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
 
     //coredata
     @IBAction func saveButton(_ sender: Any) {
@@ -153,6 +210,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }catch {
             print("error")
         }
+        
+        NotificationCenter.default.post(name: NSNotification.Name("newPlace"), object: nil)
+        navigationController?.popViewController(animated: true)
         
         
     }
