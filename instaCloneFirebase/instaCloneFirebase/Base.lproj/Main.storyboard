@@ -153,14 +153,22 @@
                                                         <constraint firstAttribute="width" constant="339" id="eZh-wD-nlx"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxX-jc-bzr">
+                                                    <rect key="frame" x="311" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="PDo-vg-dTo" firstAttribute="top" secondItem="xgR-LF-PIu" secondAttribute="topMargin" constant="-5" id="E7Y-wd-vd1"/>
                                                 <constraint firstItem="PDo-vg-dTo" firstAttribute="leading" secondItem="g2d-2C-tPe" secondAttribute="leading" id="Eit-Qz-5tf"/>
                                                 <constraint firstItem="rjO-O3-7Yo" firstAttribute="top" secondItem="g2d-2C-tPe" secondAttribute="bottom" constant="8" id="Euw-EI-bE3"/>
                                                 <constraint firstItem="g2d-2C-tPe" firstAttribute="top" secondItem="CPu-tg-H3N" secondAttribute="bottom" constant="26" id="IMG-ko-kR5"/>
+                                                <constraint firstItem="LxX-jc-bzr" firstAttribute="top" secondItem="xgR-LF-PIu" secondAttribute="topMargin" id="Ii4-RJ-uF8"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="rjO-O3-7Yo" secondAttribute="bottom" constant="20" id="K3d-X7-mby"/>
                                                 <constraint firstItem="rjO-O3-7Yo" firstAttribute="top" secondItem="Hmi-kZ-JIN" secondAttribute="top" id="Ow2-X9-REd"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="LxX-jc-bzr" secondAttribute="trailing" constant="20" id="VVe-Cs-F59"/>
                                                 <constraint firstItem="g2d-2C-tPe" firstAttribute="leading" secondItem="rjO-O3-7Yo" secondAttribute="leading" id="bap-OE-DFT"/>
                                                 <constraint firstItem="CPu-tg-H3N" firstAttribute="trailing" secondItem="Hmi-kZ-JIN" secondAttribute="trailing" id="biw-0K-pi9"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="PDo-vg-dTo" secondAttribute="trailing" constant="14" id="eOf-Bd-M5l"/>
@@ -171,6 +179,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="commentLabel" destination="g2d-2C-tPe" id="SS3-iz-2Uw"/>
+                                            <outlet property="documentIdLabel" destination="LxX-jc-bzr" id="u5d-8E-B5G"/>
                                             <outlet property="likeLabel" destination="Hmi-kZ-JIN" id="Nn9-bu-dP9"/>
                                             <outlet property="userEmailLabel" destination="PDo-vg-dTo" id="XAs-b5-cwb"/>
                                             <outlet property="userImageView" destination="CPu-tg-H3N" id="uJJ-PZ-HdX"/>
