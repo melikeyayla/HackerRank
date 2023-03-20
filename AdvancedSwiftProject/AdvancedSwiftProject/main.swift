@@ -83,3 +83,32 @@ print(predefinedTuple)
 
 let newTuple = (name: "James", metallica: true)
 print(newTuple.name)
+
+
+//Guard Let vs If Let
+// Guard -> Negative && Confident
+//If -> Positive
+
+let myNumber = "5"
+
+//Baştan olmazsa bunu yap
+func converToIntegerGuard (stringInput : String) -> Int {
+    guard let myInteger = Int(stringInput) else {
+        return 0
+    }
+    return myInteger
+}
+
+//Olmazsa else den sonrasını yap
+
+func convertToIntegerIf (stringInput : String) -> Int {
+    if let myInteger = Int(stringInput) {
+        return myInteger
+    }else {
+        return 0
+    }
+}
+
+print(convertToIntegerIf(stringInput: myNumber))
+print(converToIntegerGuard(stringInput: myNumber))
+
