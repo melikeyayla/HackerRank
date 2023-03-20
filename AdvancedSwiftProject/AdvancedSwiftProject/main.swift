@@ -73,16 +73,16 @@ myTuple2.2 = 10
 let myTuple3 = ("Melike",100)
 
 let myTuple4 = (10,[10,20,30])
-print(myTuple4.1[1]) // 20
+//print(myTuple4.1[1]) // 20
 
 let predefinedTuple : (String, String)
 predefinedTuple.0 = "Melike"
 predefinedTuple.1 = "Yayla"
 
-print(predefinedTuple)
+//print(predefinedTuple)
 
 let newTuple = (name: "James", metallica: true)
-print(newTuple.name)
+//print(newTuple.name)
 
 
 //Guard Let vs If Let
@@ -109,6 +109,55 @@ func convertToIntegerIf (stringInput : String) -> Int {
     }
 }
 
-print(convertToIntegerIf(stringInput: myNumber))
-print(converToIntegerGuard(stringInput: myNumber))
+//print(convertToIntegerIf(stringInput: myNumber))
+//print(converToIntegerGuard(stringInput: myNumber))
+
+//remainder
+
+let myNum = 11
+
+let myRemainder = myNum % 2
+print(myRemainder)
+
+if myRemainder == 1 {
+    print("its 1")
+}else if myRemainder == 2 {
+    print("its 2")
+}
+
+//SWİTCH
+
+/*
+
+switch myRemainder {
+case 1:
+    print("its 1")
+case 2:
+    print("its 2")
+default:
+    print("none of the above")
+   
+}
+ 
+ */
+
+/*
+switch myRemainder {
+case 1...3: // 1-3 arasında ise
+    print("its 1-3")
+
+default:
+    print("none of the above")
+   
+}
+ 
+ */
+
+//Breakpoint
+
+var x = 5
+print(x)
+
+x += 1
+print(x)
 
