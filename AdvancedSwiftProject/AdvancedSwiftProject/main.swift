@@ -57,6 +57,29 @@ copyOfStructJames.age = 52
 classJames.happyBirthday()
 //print(classJames.age)
 
-print(structJames.age)
+//print(structJames.age)
 structJames.happyBirthday()
-print(structJames.age)
+//print(structJames.age)
+
+//TUPLE
+
+let myTuple = (1,3)
+//print(myTuple.0)
+
+var myTuple2 = (1,3,5)
+myTuple2.2 = 10
+//print(myTuple2.2)
+
+let myTuple3 = ("Melike",100)
+
+let myTuple4 = (10,[10,20,30])
+print(myTuple4.1[1]) // 20
+
+let predefinedTuple : (String, String)
+predefinedTuple.0 = "Melike"
+predefinedTuple.1 = "Yayla"
+
+print(predefinedTuple)
+
+let newTuple = (name: "James", metallica: true)
+print(newTuple.name)
