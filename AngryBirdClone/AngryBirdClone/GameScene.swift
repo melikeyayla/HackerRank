@@ -20,7 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var box5 = SKSpriteNode()
     
     var gameStarted = false
-    var originalPosition = CGPoint?.self
+    var originalPosition : CGPoint?
     
     var score = 0
     var scoreLabel = SKLabelNode()
@@ -50,7 +50,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         //game scene ile oluşturduğumuz için
         bird = childNode(withName: "bird") as! SKSpriteNode
+        
         let birdTexture = SKTexture(imageNamed: "bird")
+        
         bird.physicsBody = SKPhysicsBody(circleOfRadius: birdTexture.size().height / 13)
         bird.physicsBody?.affectedByGravity = false // yer çekiminden etkilenecek
         bird.physicsBody?.isDynamic = true
@@ -129,6 +131,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
+        
         if contact.bodyA.collisionBitMask == ColliderType.Bird.rawValue || contact.bodyB.collisionBitMask == ColliderType.Bird.rawValue{
             
             score += 1
@@ -159,6 +162,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         */
         
         if gameStarted == false {
+            
             if let touch = touches.first {
                 let touchLocation = touch.location(in: self)
                 let touchNodes = nodes(at: touchLocation)
