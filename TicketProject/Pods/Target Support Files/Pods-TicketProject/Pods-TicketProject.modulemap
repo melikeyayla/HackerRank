@@ -1,0 +1,6 @@
+framework module Pods_TicketProject {
+  umbrella header "Pods-TicketProject-umbrella.h"
+
+  export *
+  module * { export * }
+}
